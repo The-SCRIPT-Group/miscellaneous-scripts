@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from datetime import datetime
 from requests import get
 from os import getenv
@@ -19,6 +21,34 @@ data = {
     "since": since.isoformat(),
     "until": until.isoformat(),
 }
+
+EMAILS = {
+    "Aditya Desai": (
+        "aditya.desai0199@gmail.com",
+        "adityadesai-99@users.noreply.github.com",
+    ),
+    "Akhil Narang": ("akhilnarang.1999@gmail.com", "akhilnarang@thescriptgroup.in"),
+    "Aniket Raj": (
+        "aniketronaldo10@gmail.com",
+        "aniket-spidey@users.noreply.github.com",
+    ),
+    "Kshitish Deshpande": ("ksdfg123@gmail.com", "ksdfg@users.noreply.github.com"),
+    "Ritom Gupta": ("ritomgupta99@gmail.com", "rightonrittman@gmail.com"),
+}
+
+
+def get_author(commit):
+    for name, emails in EMAILS.items():
+        for email in emails:
+            if email in commit["commit"]["author"]["email"]:
+                return name
+    return (
+        commit["commit"]["author"]["name"]
+        + " "
+        + "<"
+        + commit["commit"]["author"]["email"]
+        + ">"
+    )
 
 
 response = get(f"https://api.github.com/orgs/{ORGANIZATION}/repos", headers=headers)
@@ -44,13 +74,7 @@ for repo in repos:
     while True:
         commits += len(response.json())
         for commit in response.json():
-            author = (
-                commit["commit"]["author"]["name"]
-                + " "
-                + "<"
-                + commit["commit"]["author"]["email"]
-                + ">"
-            )
+            author = get_author(commit)
             if author not in authors.keys():
                 authors[author] = 1
             else:
