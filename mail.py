@@ -1,0 +1,27 @@
+import base64
+import os
+
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Attachment, Content, Mail
+
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+
+
+def send_certificate(name: str, email: str, cert: str):
+    message = f"Hello {name}!<br/>Here is your certificate for participating in Codex December 2019!"
+    content = Content("text/html", message)
+    subject = "Codex December 2019 Certificate"
+    from_email = ("noreply@thescriptgroup.in", "TSG Bot")
+    to_email = (email, name)
+    mail = Mail(from_email, to_email, subject, html_content=content)
+    with open(cert, "rb") as img:
+        img_data = img.read()
+    encoded = base64.b64encode(img_data).decode()
+    mail.add_attachment(Attachment(encoded, "certificate.jpg", "image/png"))
+
+    try:
+        response = SendGridAPIClient(SENDGRID_API_KEY).send(mail)
+        print(f"Sent {cert} to {name} at {email}")
+    except Exception as e:
+        print(e)
+        print(e.body)
