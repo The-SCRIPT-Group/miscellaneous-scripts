@@ -11,7 +11,9 @@ repos = []
 headers = {
     "Authorization": "token " + GITHUB_OAUTH_TOKEN
     if GITHUB_OAUTH_TOKEN is not None
-    else input("Enter your Github API token: ")
+    else input(
+        "Enter your Github API token or try without one, which may result in you getting rate-limited soon: "
+    )
 }
 
 since = datetime.strptime("1 Jan 2019", "%d %b %Y")
