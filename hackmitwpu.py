@@ -14,7 +14,7 @@ else:
 with open(filename, 'r') as file:
     data = list(reader(file))
 
-judge_eval = defaultdict(lambda : dict())
+judge_eval = defaultdict(lambda: dict())
 
 for row in data[1:]:
     try:
