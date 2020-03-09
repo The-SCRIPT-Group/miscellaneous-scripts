@@ -33,6 +33,8 @@ scores = dict()
 for team in judge_eval.keys():
     scores[team] = sum(judge_eval[team].values()) / len(judge_eval[team].values())
 
-winners = nlargest(4, scores, key=scores.get)
+winners = nlargest(len(scores.items()), scores, key=scores.get)
+
+print()
 for x in winners:
     print(f"{x} has a score of {scores[x]}")
