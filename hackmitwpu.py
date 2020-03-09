@@ -18,7 +18,7 @@ scores = defaultdict(lambda: 0)
 
 for row in data[1:]:
     try:
-        scores[row[2]] += int(row[-1])
+        scores[row[0]] += int(row[-1])
     except Exception as e:
         print(e)
         print(row)
@@ -26,4 +26,4 @@ for row in data[1:]:
 
 winners = nlargest(4, scores, key=scores.get)
 for x in winners:
-    print(x, scores[x])
+    print(f"{x} has a score of {scores[x]}")
