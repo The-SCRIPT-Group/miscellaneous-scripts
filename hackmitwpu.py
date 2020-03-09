@@ -14,15 +14,24 @@ else:
 with open(filename, 'r') as file:
     data = list(reader(file))
 
-scores = defaultdict(lambda: 0)
+judge_eval = defaultdict(lambda : dict())
 
 for row in data[1:]:
     try:
-        scores[row[0]] += int(row[-1])
+        team = row[2]
+        judge = row[1]
+        if judge not in judge_eval[team].keys():
+            judge_eval[team][judge] = sum(map(int, row[3:]))
+        else:
+            print(f"repeated row for judge {judge} and team {team}")
     except Exception as e:
         print(e)
         print(row)
         break
+
+scores = dict()
+for team in judge_eval.keys():
+    scores[team] = sum(judge_eval[team].values()) / len(judge_eval[team].values())
 
 winners = nlargest(4, scores, key=scores.get)
 for x in winners:
