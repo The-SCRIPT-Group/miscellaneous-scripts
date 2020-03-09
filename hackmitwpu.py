@@ -4,7 +4,14 @@ from csv import reader
 from collections import defaultdict
 from heapq import nlargest
 
-with open('dead_entries.csv', 'r') as file:
+import sys
+
+if len(sys.argv) > 1:
+    filename = sys.argv[1]
+else:
+    filename = 'dead_entries.csv'
+
+with open(filename, 'r') as file:
     data = list(reader(file))
 
 scores = defaultdict(lambda: 0)
