@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from csv import reader
 from collections import defaultdict
 from heapq import nlargest
@@ -9,7 +11,7 @@ scores = defaultdict(lambda: 0)
 
 for row in data[1:]:
     try:
-        scores[row[2]] += int(row[6])
+        scores[row[2]] += int(row[-1])
     except Exception as e:
         print(e)
         print(row)
