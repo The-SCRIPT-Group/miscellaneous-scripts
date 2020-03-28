@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
+from base64 import b64encode
 from datetime import datetime
+from getpass import getpass
 from requests import get
 from os import getenv
 
 GITHUB_OAUTH_TOKEN = getenv("GITHUB_OAUTH_TOKEN")
+HADES_API_KEY = getenv("HADES_API_KEY")
 ORGANIZATION = "The-SCRIPT-Group"
 repos = []
 
@@ -97,3 +100,27 @@ print("Commits per person: ")
 print()
 for author in authors:
     print(f"{author} - {authors[author]}")
+
+
+if HADES_API_KEY is not None:
+    headers = {"Authorization": HADES_API_KEY}
+else:
+    headers = {
+        "Credentials": b64encode(
+            str(
+                input("Enter your Hades username: ")
+                + "|"
+                + getpass(prompt="Enter your Hades password: ")
+            ).encode()
+        )
+    }
+
+response = get("https://hades.thescriptgroup.in/api/stats", headers=headers).json()
+
+event_count, registrations_count = 0, 0
+for event in response:
+    event_count += 1
+    registrations_count += response[event]
+
+print(f"Number of events - {event_count}")
+print(f"Number of registrations - {registrations_count}")
