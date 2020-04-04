@@ -32,7 +32,11 @@ EMAILS = {
         "aditya.desai0199@gmail.com",
         "adityadesai-99@users.noreply.github.com",
     ),
-    "Akhil Narang": ("akhilnarang.1999@gmail.com", "akhilnarang@thescriptgroup.in"),
+    "Akhil Narang": (
+        "akhilnarang.1999@gmail.com",
+        "akhilnarang@thescriptgroup.in",
+        "me@akhilnarang.dev",
+    ),
     "Aniket Raj": (
         "aniketronaldo10@gmail.com",
         "aniket-spidey@users.noreply.github.com",
