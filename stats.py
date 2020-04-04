@@ -117,10 +117,15 @@ else:
 
 response = get("https://hades.thescriptgroup.in/api/stats", headers=headers).json()
 
+print()
+
 event_count, registrations_count = 0, 0
 for event in response:
+    print(f"{event} - {response[event]}")
     event_count += 1
     registrations_count += response[event]
+
+print()
 
 print(f"Number of events - {event_count}")
 print(f"Number of registrations - {registrations_count}")
