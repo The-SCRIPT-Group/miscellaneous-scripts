@@ -30,18 +30,31 @@ data = {
 EMAILS = {
     "Aditya Desai": (
         "aditya.desai0199@gmail.com",
-        "adityadesai-99@users.noreply.github.com",
+        "AdityaDesai-99@users.noreply.github.com",
     ),
     "Akhil Narang": (
         "akhilnarang.1999@gmail.com",
         "akhilnarang@thescriptgroup.in",
         "me@akhilnarang.dev",
     ),
+    "Aniket Inamdar": (
+        "50190428+aniket1020@users.noreply.github.com",
+        "aniket.1020@gmail.com",
+    ),
     "Aniket Raj": (
         "aniketronaldo10@gmail.com",
         "aniket-spidey@users.noreply.github.com",
     ),
+    "Anunay Maheshwari": ("anunaymaheshwari@thescriptgroup.in", "anunaym14@gmail.com"),
     "Kshitish Deshpande": ("ksdfg123@gmail.com", "ksdfg@users.noreply.github.com"),
+    "Omkar Chandorkar": (
+        "forumomkar@gmail.com",
+        "37974264+gotenksIN@users.noreply.github.com",
+    ),
+    "Pranav Bakre": (
+        "43286669+PranavBakre@users.noreply.github.com",
+        "psbakre@yahoo.com",
+    ),
     "Ritom Gupta": ("ritomgupta99@gmail.com", "rightonrittman@gmail.com"),
 }
 
