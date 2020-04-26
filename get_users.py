@@ -21,7 +21,9 @@ else:
         )
     }
 
-params = {'table': input('Enter table name: ')}
+table = input('Enter table name: ')
+
+params = {'table': table}
 
 start = int(input('Enter the starting entry number: '))
 end = int(input('Enter the ending entry number: '))
@@ -37,18 +39,11 @@ if response.status_code != 200:
 
 users = response.json()
 
-
-with open("../CourseraCSV/Coursera{}-{}.csv".format(start,end),"w") as f:
-    
+with open(f'{table}_{start}-{end}.csv', 'w') as f:
     f.write('fullname,email\n')
+    print('fullname,email')
     for user in users:
         count += 1
         if count >= start and count <= end:
-            f.write(user['name'] + ',' + user['email']+'\n')
-    
-count=0
-print('fullname,email')
-for user in users:
-    count += 1
-    if count >= start and count <= end:
-        print(user['name'] + ',' + user['email'])
+            f.write(user['name'] + ',' + user['email'] + '\n')
+            print(user['name'] + ',' + user['email'])
