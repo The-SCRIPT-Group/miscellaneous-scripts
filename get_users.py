@@ -37,6 +37,16 @@ if response.status_code != 200:
 
 users = response.json()
 
+
+with open("../CourseraCSV/Coursera{}-{}.csv".format(start,end),"w") as f:
+    
+    f.write('fullname,email\n')
+    for user in users:
+        count += 1
+        if count >= start and count <= end:
+            f.write(user['name'] + ',' + user['email']+'\n')
+    
+count=0
 print('fullname,email')
 for user in users:
     count += 1
