@@ -31,6 +31,8 @@ EMAILS = {
     "Aditya Desai": (
         "aditya.desai0199@gmail.com",
         "AdityaDesai-99@users.noreply.github.com",
+        "adityadesai@thescriptgroup.in",
+        "43269300+adityavdesai@users.noreply.github.com",
     ),
     "Akhil Narang": (
         "akhilnarang.1999@gmail.com",
@@ -54,6 +56,7 @@ EMAILS = {
     "Pranav Bakre": (
         "43286669+PranavBakre@users.noreply.github.com",
         "psbakre@yahoo.com",
+        "psbakre123@gmail.com",
     ),
     "Ritom Gupta": ("ritomgupta99@gmail.com", "rightonrittman@gmail.com"),
 }
