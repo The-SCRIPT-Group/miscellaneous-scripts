@@ -11,13 +11,13 @@ HADES_API_KEY = getenv("HADES_API_KEY")
 ORGANIZATION = "The-SCRIPT-Group"
 repos = []
 
-headers = {
-    "Authorization": "token " + GITHUB_OAUTH_TOKEN
-    if GITHUB_OAUTH_TOKEN is not None
-    else input(
+if GITHUB_OAUTH_TOKEN is None:
+    GITHUB_OAUTH_TOKEN = input(
         "Enter your Github API token or try without one, which may result in you getting rate-limited soon: "
     )
-}
+
+
+headers = {"Authorization": "token " + GITHUB_OAUTH_TOKEN}
 
 since = datetime.strptime("1 Jan 2019", "%d %b %Y")
 until = datetime.strptime("1 Jan 2020", "%d %b %Y")
