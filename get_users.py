@@ -34,7 +34,10 @@ response = get(
 )
 
 if response.status_code != 200:
-    print(response.json()['response'])
+    try:
+        print(response.json()['response'])
+    except:
+        print(response.text)
     exit(1)
 
 users = response.json()
