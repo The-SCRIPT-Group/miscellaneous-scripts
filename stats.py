@@ -135,8 +135,9 @@ else:
         )
     }
 
-response = get("https://hades.thescriptgroup.in/api/stats", headers=headers).json()
-
+response = get("https://hades.thescriptgroup.in/api/stats", headers=headers,).json()[
+    'response'
+]
 print()
 
 event_count, registrations_count = 0, 0
