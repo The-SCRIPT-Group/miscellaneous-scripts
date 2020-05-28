@@ -40,7 +40,7 @@ if response.status_code != 200:
         print(response.text)
     exit(1)
 
-users = response.json()
+users = response.json()['response']
 
 with open(f'{table}_{start}-{end}.csv', 'w') as f:
     f.write('fullname,email\n')
