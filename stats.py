@@ -3,8 +3,9 @@
 from base64 import b64encode
 from datetime import datetime
 from getpass import getpass
-from requests import get
 from os import getenv
+from requests import get
+from sys import exit
 
 GITHUB_OAUTH_TOKEN = getenv("GITHUB_OAUTH_TOKEN")
 HADES_API_KEY = getenv("HADES_API_KEY")
@@ -135,9 +136,15 @@ else:
         )
     }
 
-response = get("https://hades.thescriptgroup.in/api/stats", headers=headers,).json()[
-    'response'
-]
+response = get("https://hades.thescriptgroup.in/api/stats", headers=headers)
+
+if response.status_code != 200:
+    try:
+        print(response.json['message'])
+    except KeyError:
+        print('Error occurred')
+    exit(1)
+
 print()
 
 event_count, registrations_count = 0, 0
