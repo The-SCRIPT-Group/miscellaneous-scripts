@@ -21,6 +21,8 @@ else:
         )
     }
 
+headers['User-Agent'] = 'csv-generator/1.0'
+
 table = input('Enter table name: ')
 
 params = {'table': table}

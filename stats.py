@@ -136,6 +136,8 @@ else:
         )
     }
 
+headers['User-Agent'] = 'tsg-stats/1.0'
+
 response = get("https://hades.thescriptgroup.in/api/stats", headers=headers)
 
 if response.status_code != 200:
